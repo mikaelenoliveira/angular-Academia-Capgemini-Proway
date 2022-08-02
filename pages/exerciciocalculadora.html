@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="n1" placeholder="Informe um numero 1" />
+    <input type="text" id="n2" placeholder="Informe um numero 2" />
+    <button onclick="calcular()">calcular</button>
+
+    <select>
+      <option value="soma">Soma</option>
+      <option value="sub">Subtração</option>
+      <option value="mul">Multiplicação</option>
+      <option value="div">Divisão</option>
+    </select>
+
+    <hr />
+    <label id="resultado"></label>
+
+    <script>
+      function calcular() {
+        document.getElementById("resultado").innerHTML = "";
+        var opcao = document.getElementsByTagName("select")[0].value;
+        if (dadosValidos()) {
+          var x = parseInt(document.getElementById("n1").value);
+          var y = parseInt(document.getElementById("n2").value);
+        }
+        if (opcao == "soma") {
+          document.getElementById("resultado").innerHTML = somar(x, y);
+        }
+        if (opcao == "sub") {
+          document.getElementById("resultado").innerHTML = subtrair(x, y);
+        }
+        if (opcao == "mul") {
+          document.getElementById("resultado").innerHTML = multiplicar(x, y);
+        }
+        if (opcao == "div") {
+          document.getElementById("resultado").innerHTML = dividir(x, y);
+        }
+      }
+
+      function somar(n1, n2) {
+        return n1 + n2;
+      }
+
+      function subtrair(n1, n2) {
+        return n1 - n2;
+      }
+
+      function multiplicar(n1, n2) {
+        return n1 * n2;
+      }
+
+      function dividir(n1, n2) {
+        var resultado;
+
+        try {
+          if (n2 == 0) {
+            throw "Não é possivel divisão por zero";
+          }
+          resultado = n1 / n2;
+        } catch (err) {
+          resultado = err;
+        } finally {
+          return resultado;
+        }
+
+        return resultado;
+      }
+
+      function dadosValidos() {
+        if (document.getElementById("n1").value == "") {
+          alert("informe um numero valido");
+          document.getElementById("n1").focus();
+          return false;
+        }
+        if (document.getElementById("n1").value == "") {
+          alert("informe um numero valido");
+          document.getElementById("n2").focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

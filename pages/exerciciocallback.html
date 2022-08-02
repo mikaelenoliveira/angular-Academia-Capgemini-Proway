@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="n1" placeholder="Informe numero 1" />
+    <input type="number" id="n2" placeholder="Informe numero 2" />
+    <button onclick="soma(showParagrafo)">Mostrar em paragrafo</button>
+    <button onclick="soma(showlabel)">Mostrar em label</button> <br />
+    <button onclick="soma(showinput)">Mostrar em input</button>
+
+    <hr />
+    <label for="">Resultado</label>
+    <br />
+    <p></p>
+    <label for="" id="resultado"></label>
+    <input type="text" readonly />
+
+    <script>
+      function soma(callback) {
+        var n1 = parseInt(document.getElementById("n1").value);
+        var n2 = parseInt(document.getElementById("n2").value);
+        var resultado = n1 + n2;
+        callback(resultado);
+      }
+
+      function showParagrafo(result) {
+        document.getElementsByTagName(
+          "p"
+        )[0].innerHTML = `Valor em Paragrafo: ${result}`;
+      }
+
+      function showlabel(result) {
+        document.getElementById(
+          "resultado"
+        ).innerHTML = `Valor em Label: ${result}`;
+      }
+
+      function showinput(result) {
+        document.getElementsByTagName("input")[2].value = result;
+      }
+    </script>
+  </body>
+</html>

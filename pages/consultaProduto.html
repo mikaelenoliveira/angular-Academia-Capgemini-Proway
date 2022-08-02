@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      class="waves-effect waves-light btn"
+      onclick="consultar(displayParagrafo)"
+    >
+      Consultar
+    </button>
+    <button
+      class="waves-effect waves-light btn"
+      onclick="consultar(displayTabela)"
+    >
+      Consultar mostrando em tabela
+    </button>
+    <hr />
+    <p></p>
+    <table style="">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <script>
+      function consultar(callback) {
+        let url = "http://localhost:3000/produtos";
+        fetch(url)
+          .then((data) => data.json())
+          .then((result) => callback(result));
+      }
+
+      function displayParagrafo(obj) {
+        document.getElementsByTagName("p")[0].innerHTML = "";
+        for (let i = 0; i < obj.length; i++) {
+          document.getElementsByTagName(
+            "p"
+          )[0].innerHTML += `${obj[i].nome} <br>`;
+        }
+      }
+
+      function displayTabela(lista) {
+        document.getElementById("tbody").innerHTML = "";
+        for (let i = 0; i < lista.length; i++) {
+          document.getElementById("tbody").innerHTML += `<tr>
+            <td>${lista[i].id} </td>
+            <td>${lista[i].nome} </td>
+            <td>${lista[i].descricao} </td>
+            <td>${lista[i].preco} </td>
+            </tr>`;
+        }
+      }
+    </script>
+  </body>
+</html>
