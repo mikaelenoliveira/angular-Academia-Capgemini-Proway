@@ -1,0 +1,56 @@
+<form #f="ngForm" (ngSubmit)="saveContato(f.value)">
+  <input
+    type="text"
+    ngModel
+    name="nome"
+    placeholder="Informe o nome"
+    #n="ngModel"
+    required
+    minlength="4"
+    maxlength="18"
+  />
+
+  <div *ngIf="n.invalid">
+    <div *ngIf="n.errors?.['required']">O nome deve ser informado.</div>
+
+    <div *ngIf="n.errors?.['minlength']">
+      O nome deve ter no minimo 4 caracters
+    </div>
+
+    <div *ngIf="n.errors?.['maxlength']">
+      O nome não pode ter mais que 18 caracters
+    </div>
+  </div>
+
+  <input
+    type="number"
+    ngModel
+    name="idade"
+    placeholder="Informe a idade"
+    #i="ngModel"
+    required
+  />
+  <div *ngIf="i.value <= 17">A idade não deve ser menor que 18 anos</div>
+  <div>
+    <input
+      id="email_inline"
+      type="email"
+      class="validate"
+      ngModel
+      name="email"
+    />
+    <label for="email_inline">Digite um e-mail valido</label>
+    <span
+      class="helper-text"
+      data-error=" -- E-mail invalido. Por favor, digite um endereço de e-mail valido"
+      data-success=" -- E-mail validado"
+    ></span>
+  </div>
+  <input
+    type="password"
+    placeholder="Senha"
+    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+  />
+  <button>Salvar</button>
+  <label>{{ msg }}</label>
+</form>

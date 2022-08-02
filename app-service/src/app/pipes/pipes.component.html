@@ -1,0 +1,23 @@
+<p>{{ produto.descricao }}</p>
+<p>{{ produto.descricao | uppercase }}</p>
+<p>{{ produto.descricao | lowercase }}</p>
+<hr />
+
+<p>{{ produto.preco }}</p>
+<p>{{ produto.preco | currency: "BRL" }}</p>
+<p>{{ produto.preco | currency: "BRL":"symbol":"" }}</p>
+<p>{{ produto.preco | currency: "US" }}</p>
+<hr />
+
+<p>{{ produto.validade }}</p>
+<p>{{ produto.validade | date: "dd-MM-yyyy" }}</p>
+<p>{{ produto.validade | date: "MM-yyyy" }}</p>
+<p>{{ produto.validade | date: "MM-yyyy hh:mm:ss" }}</p>
+<hr />
+
+<p>{{ produto.createAt }}</p>
+<p>{{ produto.createAt | date: "short" }}</p>
+<p>{{ produto.createAt | date: "fullTime" }}</p>
+
+<hr />
+<p>{{ produto.descricao | outroUpper }}</p>

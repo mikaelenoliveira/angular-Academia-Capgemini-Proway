@@ -1,0 +1,11 @@
+<nav>
+  <a routerLink="/cadastro">cadastro</a>
+  <a routerLink="/consulta">Consulta</a>
+  <a routerLink="/pipes">Pipes</a>
+  <a routerLink="/usuario">Usuario</a>
+  <a routerLink="/login">Login</a>
+  <button *ngIf="userLogado !== ''" (click)="logout()">Logout</button>
+  <label> {{ userLogado.email }}</label>
+</nav>
+
+<router-outlet></router-outlet>
